@@ -35,6 +35,7 @@
         type="date"
         v-model="transferData.transferDate"
         class="form-control rounded-3"
+        data-cy="transfer-date"
         required
       />
       <button type="submit" class="btn btn-success rounded-pill">
@@ -76,6 +77,8 @@ export default {
   },
   methods: {
     async submitTransfer() {
+      // eslint-disable-next-line no-debugger
+      debugger;
       this.error = "";
       this.success = false;
       if (this.sourceError || this.destError) return;
@@ -96,8 +99,8 @@ export default {
         };
         this.$emit("transfer-created");
       } catch (e) {
-        if (e.response && e.response.data && e.response.data.message) {
-          if (e.response.data.message.includes("Fee not applicable")) {
+        if (e.response && e.response.data) {
+          if (e.response.data.includes("Fee not applicable")) {
             this.error =
               "Transfer not allowed: no applicable fee for the selected date.";
           } else {

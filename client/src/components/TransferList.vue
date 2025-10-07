@@ -32,8 +32,8 @@
         <div>
           <strong>{{ t.sourceAccount }} → {{ t.destinationAccount }}</strong>
           <br />
-          Amount: <span class="text-success">${{ t.amount.toFixed(2) }}</span> |
-          Fee: <span class="text-warning">${{ t.fee.toFixed(2) }}</span> <br />
+          Amount: <span class="text-success">R${{ t.amount.toFixed(2) }}</span> |
+          Fee: <span class="text-warning">R${{ t.fee.toFixed(2) }}</span> <br />
           Transfer Date: {{ t.transferDate }} | Scheduled:
           {{ t.schedulingDate }}
         </div>

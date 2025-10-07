@@ -1,6 +1,6 @@
 describe("Financial Transfer Scheduler", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:8081");
+    cy.visit("http://localhost:5173");
   });
 
   it("should show the transfer form", () => {
@@ -17,7 +17,7 @@ describe("Financial Transfer Scheduler", () => {
     cy.get('input[placeholder="Amount"]').type("100");
 
     const today = new Date().toISOString().split("T")[0];
-    cy.get('input[type="date"]').type(today);
+    cy.get('[data-cy="transfer-date"]').type(today);
 
     cy.get('button[type="submit"]').click();
 
@@ -36,7 +36,7 @@ describe("Financial Transfer Scheduler", () => {
     const date = new Date();
     date.setDate(date.getDate() + 5);
     const formatted = date.toISOString().split("T")[0];
-    cy.get('input[type="date"]').type(formatted);
+    cy.get('[data-cy="transfer-date"]').type(formatted);
 
     cy.get('button[type="submit"]').click();
 
@@ -55,7 +55,7 @@ describe("Financial Transfer Scheduler", () => {
     const date = new Date();
     date.setDate(date.getDate() + 15);
     const formatted = date.toISOString().split("T")[0];
-    cy.get('input[type="date"]').type(formatted);
+    cy.get('[data-cy="transfer-date"]').type(formatted);
 
     cy.get('button[type="submit"]').click();
 
@@ -74,12 +74,10 @@ describe("Financial Transfer Scheduler", () => {
     const date = new Date();
     date.setDate(date.getDate() + 60); // beyond 50 days
     const formatted = date.toISOString().split("T")[0];
-    cy.get('input[type="date"]').type(formatted);
+    cy.get('[data-cy="transfer-date"]').type(formatted);
 
     cy.get('button[type="submit"]').click();
 
-    cy.get("div").contains(
-      "Error scheduling transfer"
-    );
+    cy.get("div").contains("Error scheduling transfer");
   });
 });
