@@ -26,7 +26,7 @@ public class TransferController {
         } catch (FeeNotApplicableException e) {
             return ResponseEntity
                     .badRequest()
-                    .body(e.getMessage()); // envia alerta para o frontend
+                    .body(e.getMessage());
         }
     }
 

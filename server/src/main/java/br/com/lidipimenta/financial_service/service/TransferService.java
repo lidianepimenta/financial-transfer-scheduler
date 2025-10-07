@@ -20,7 +20,7 @@ public class TransferService {
     }
 
     public Transfer createTransfer(Transfer transfer) {
-        BigDecimal fee = calculateFee(transfer); // calcula taxa
+        BigDecimal fee = calculateFee(transfer);
         transfer.setFee(fee);
         transfer.setSchedulingDate(LocalDate.now());
         return repository.save(transfer);
